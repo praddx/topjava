@@ -17,4 +17,8 @@ public class MealWithExceed {
         this.calories = calories;
         this.exceed = exceed;
     }
+
+    public static MealWithExceed of(Meal meal, boolean exceed){
+        return new MealWithExceed(meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceed);
+    }
 }
