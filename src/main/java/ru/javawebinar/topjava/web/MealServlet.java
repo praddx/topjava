@@ -17,7 +17,7 @@ public class MealServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       List<Meal> meals = MocksDB.getMeals();
+       List<Meal> meals = MocksDB.getMemoryMeals();
        List<MealWithExceed> exceedMeals = MealsUtil.getFilteredWithExceeded(meals, 2000);
        request.setAttribute("meals", exceedMeals);
        request.setAttribute("dateTimeFormatter", DateTimeFormatter.ofPattern("dd-MM-yyy hh:mm"));

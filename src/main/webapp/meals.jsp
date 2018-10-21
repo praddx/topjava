@@ -7,19 +7,38 @@
     <title>Meals</title>
 </head>
 <body>
-    <h3><a href="index.html">Home</a></h3>
-    <h2>Meals</h2>
+    <h2><a href="index.html">Home</a></h2>
+    <form action="meals" method="get">
+        First name: <input type="text" name="dateTime"><br>
+        Last name: <input type="text" name="description"><br>
+        Calories: <input type="text" name="calories"><br>
+        <input type="submit" value="New Meal">
+    </form>
+    <h3>Meals</h3>
     <table style="width:100%">
         <tr>
             <th>Date/Time</th>
             <th>Description</th>
             <th>Calories</th>
+            <th>...</th>
         </tr>
         <c:forEach var="meal" items="${meals}">
             <tr class="${meal.exceed ? 'redtext' : 'greentext'}">
-                <th>${dateTimeFormatter.format(meal.dateTime)}</th>
-                <th>${meal.description}</th>
-                <th>${meal.calories}</th>
+                <td>${dateTimeFormatter.format(meal.dateTime)}</td>
+                <td>${meal.description}</td>
+                <td>${meal.calories}</td>
+                <td>
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <a href="delete/${meal.uid}">...</a>
+                            </td>
+                            <td>
+                                <a href="update/${meal.uid}">...</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
         </c:forEach>
     </table>
