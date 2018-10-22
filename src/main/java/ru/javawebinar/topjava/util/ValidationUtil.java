@@ -2,6 +2,7 @@ package ru.javawebinar.topjava.util;
 
 
 import ru.javawebinar.topjava.model.AbstractBaseEntity;
+import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 public class ValidationUtil {
@@ -39,4 +40,6 @@ public class ValidationUtil {
             throw new IllegalArgumentException(entity + " must be with id=" + id);
         }
     }
+
+
 }

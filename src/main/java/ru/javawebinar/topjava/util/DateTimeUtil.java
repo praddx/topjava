@@ -11,6 +11,13 @@ public class DateTimeUtil {
         return lt.compareTo(startTime) >= 0 && lt.compareTo(endTime) <= 0;
     }
 
+    public static boolean isBetween(LocalDateTime dateTime, TimePeriod period) {
+        return dateTime.toLocalDate().compareTo(period.getStartDate()) >= 0
+                && dateTime.toLocalDate().compareTo(period.getEndDate()) <= 0
+                && dateTime.toLocalTime().compareTo(period.startTime) >= 0
+                && dateTime.toLocalTime().compareTo(period.endTime) <= 0;
+    }
+
     public static String toString(LocalDateTime ldt) {
         return ldt == null ? "" : ldt.format(DATE_TIME_FORMATTER);
     }
