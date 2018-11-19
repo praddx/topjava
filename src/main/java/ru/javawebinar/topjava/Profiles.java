@@ -26,4 +26,23 @@ public class Profiles {
             }
         }
     }
+
+    public static String getActiveRepositoryProfile() {
+        try {
+            Class.forName("ru.javawebinar.topjava.repository.datajpa.DataJpaMealRepositoryImpl");
+            return Profiles.DATAJPA;
+        } catch (ClassNotFoundException e) {
+            try {
+                Class.forName("ru.javawebinar.topjava.repository.jpa.JpaMealRepositoryImpl");
+                return Profiles.JPA;
+            } catch (ClassNotFoundException e1) {
+                try {
+                    Class.forName("ru.javawebinar.topjava.repository.jdbc");
+                    return Profiles.JDBC;
+                } catch (ClassNotFoundException e2) {
+                    throw new IllegalArgumentException("Could not find repository implementation");
+                }
+            }
+        }
+    }
 }
